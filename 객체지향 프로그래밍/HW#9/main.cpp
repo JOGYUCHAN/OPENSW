@@ -5,46 +5,59 @@
 #include "Subject.h"
 using namespace std;
 
-int main(void)
-{
-   Subject sub1("컴퓨터", 3, "C+"); // 인자있는 생성자
-   Subject sub2(sub1); // 복사생성자
-   cout << "\n" << "sub1의 정보" << "\n";
-   sub1.PrintTitle();
-   sub1.PrintData();
-
-   cout << "\n" << "sub2의 정보" << "\n";
-   sub2.PrintTitle();
-   sub2.PrintData();
-   cout << "\n";
-   sub2.Modify(); //sub2의 내용 수정
-   sub2.PrintTitle(); // 수정된 내용 출력
-   sub2.PrintData();
-   cout << "\n";
-
-   Student st2("홍길동", 2013909845, 1, &sub1); // 인자있는 생성자
-   Student st1(st2); // 깊은 복사
-   Student st3("김성령", 2015909845, 1, &sub2);
-
-
-   cout << "\n" << "st1의 정보" << "\n";
-   st1.PrintData();
-
-   cout << "\n" << "st2의 정보" << "\n";
-   st2.PrintData();
-
-   cout << "\n" << "st3의 정보" << "\n";
-   st3.PrintData();
-
-
-   cout << "\n" << "st2의 정보수정" << "\n";
-   st2.Modify(); // st2 학생의 정보 수정_
-   cout << "\n" << "수정된 st2의 정보" << "\n";
-   st2.PrintData();
-   st1.PrintData();
-
-   cout << "\n" << "st3의 정보" << "\n";
-   st3.PrintData();
+int main(void) {
+	Student std;
+	std.InputData();
+	std.PrintData();
+	Subject* sub = std.SubSearch("사진학");
+	// 과목명이 성공적으로 탐색된 경우
+	// 해당 과목정보가 있는 메모리 주소를 리턴
+	if (sub != NULL) {
+		sub->PrintTitle();
+		sub->PrintData();
+	}
 
    return 0;
 }
+
+//void Data(const Student& s) { // 응용프로그램에 있는 전역함수
+//	cout << s.GetName() << "이 수강한 과목은 총" << s.GetSubNum() << "개로";
+//	cout << "수강한 과목의 평균평점은" << s.GetAveGPA() << "입니다.\n";
+//}
+//void main() {
+//	Subject sub1("컴퓨터", 3, "C"); Subject sub2("계산기", 2, "A");
+//	Subject::PrintTitle();
+//	sub1.PrintData();
+//	sub2.PrintData();
+//	Student st1("홍길동", 2013909845, 1, &sub1);
+//	st1.PrintData();
+//	Data(st1);
+//}
+
+// int main(void) {
+// 	Subject sub1[2] = { Subject("컴퓨터", 3, "C"), Subject("현대무용", 2, "A") };
+// 	Subject* sub2[2] = { new Subject(), new Subject("수학", 3, "C") };
+// 	Student st1;
+// 	Student st2("홍길동", 2013909845, 2, sub1);
+// 	Student* st3 = new Student[2];
+// 	cout << "\n" << "sub2[0] 입력" << "\n";
+// 		sub2[0]->InputData();
+// 	cout << "\n" << "st1 입력" << "\n";
+// 	st1.InputData();
+// 	cout << "\n" << "st3 입력" << "\n";
+// 	for (int i = 0; i < 2; i++) (st3 + i)->InputData();
+// 	cout << "\n" << "sub1 정보 출력" << "\n";
+// 	Subject::PrintTitle();
+// 	for (int i = 0; i < 2; i++) sub1[i].PrintData();
+// 	cout << "\n" << "sub2 정보 출력" << "\n";
+// 	Subject::PrintTitle();
+// 	for (int i = 0; i < 2; i++) sub2[i]->PrintData();
+// 	cout << "\n" << "st1 정보 출력" << "\n";
+// 	st1.PrintData();
+// 	cout << "\n" << "st2 정보 출력" << "\n";
+// 	st2.PrintData();
+// 	cout << "\n" << "st3 정보 출력" << "\n";
+// 	for (int i = 0; i < 2; i++) (st3 + i)->PrintData();
+
+//    return 0;
+// }

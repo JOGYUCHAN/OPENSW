@@ -3,6 +3,9 @@
 #include"Subject.h"
 using namespace  std;
 
+#ifndef __STUDENT_H__
+#define __STDUENT_H__
+
 class Student {
 protected:
    string m_name; // 학생 이름
@@ -29,4 +32,8 @@ public:
    int GetSubNum();
    float GetAveGPA();
 
+   Subject* SubSearch(string subname);
+
 };
+
+#endif

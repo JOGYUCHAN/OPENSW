@@ -214,3 +214,15 @@ float Student::GetAveGPA()
 {
    return m_aveGPA;
 }
+
+Subject* Student::SubSearch(string subname) {
+    cout <<"\n" << subname << " : 탐색결과\n";
+
+    for (int i = 0; i < m_subnum;i++) {
+        if (this->m_sub[i].GetName() == subname)
+            return &m_sub[i];
+    }
+
+    cout << "찾는 과목이 없습니다";
+    return NULL;
+};

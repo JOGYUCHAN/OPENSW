@@ -2,6 +2,9 @@
 #include<string> //string 클래스를 사용하기 위한 헤더파일
 using namespace std;
 
+#ifndef __SUBJECT_H__
+#define __SUBJECT_H__
+
 class Subject {
 protected: // 클래스 자신과 상속받은 자식 클래스에만 허용
    string m_name; // 과목명
@@ -35,3 +38,5 @@ public:
 
 
 };
+
+#endif
